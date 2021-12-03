@@ -1,0 +1,61 @@
+<h2>Réservation d'une salle de classe</h2>
+
+<form>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Type de classe</label>
+    <select id="" class="form-control" >
+      <option value="SUITE">Salle de classe</option>
+      <option value="PENTHOUSE">Amphithéâtre</option>
+      <option value="BASIC">Salle de conférence</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Date</label>
+    <input type="date" class="form-control">
+  </div>
+
+  <label for="" class="form-label">Start Time</label>
+  <div class="row">
+    <div class="col-sm-2">
+        <select class="form-control" >
+          <option *ngFor="let hour of hours" value=>{{ hour }}</option>
+        </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-control" >
+        <option *ngFor="let minute of minutes" value=>{{ minute }}</option>
+      </select>
+    </div>
+  </div>
+
+  <label for="" class="form-label">End Time</label>
+  <div class="row">
+    <div class="col-sm-2">
+      <select class="form-control" >
+        <option *ngFor="let hour of hours" value=>{{ hour }}</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-control" >
+        <option *ngFor="let minute of minutes" value=>{{ minute }}</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="" class="form-label">Capacité du local</label>
+    <input type="number" class="form-control">
+  </div>
+
+  <label for="" class="form-label">Equipements</label>
+  <div class="mb-3">
+    <label for="" class="form-label">Whiteboard</label>
+    <input type="checkbox" class="form-check-input">
+  </div>
+
+  <button type="submit" class="btn btn-success">envoyer</button>
+
+</form>

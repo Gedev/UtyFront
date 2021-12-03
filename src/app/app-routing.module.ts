@@ -8,8 +8,8 @@ import {ScheduleComponent} from "./components/personal-space/schedule/schedule.c
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
-  { path: 'my-personal-space/', component: ScheduleComponent },
-  { path: 'classroom-reservation/', component: ClassroomReservationComponent},
+  { path: 'my-personal-space', component: ScheduleComponent },
+  { path: 'classroom-reservation', component: ClassroomReservationComponent},
   { path: 'student', component: StudentComponent}
 ]
 
