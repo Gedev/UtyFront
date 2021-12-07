@@ -1,0 +1,9 @@
+
+
+<ul *ngFor="let reserv of listClassroomsReservations">
+  <li>ID : {{ reserv.id }}</li>
+  <li>Start_time : {{ reserv.start_time }}</li>
+  <li>End_time : {{ reserv.end_time }}</li>
+  <li>Professor_id : {{ reserv.professor_id }}</li>
+  <li>Professor_id : {{ reserv.professor.username }}</li>
+</ul>

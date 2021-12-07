@@ -10,6 +10,12 @@ import {AppRoutingModule} from "./app-routing.module";
 import { ClassroomReservationComponent } from './components/classroom-reservation/classroom-reservation.component';
 import { ScheduleComponent } from './components/personal-space/schedule/schedule.component';
 import { StudentComponent } from './components/student/student.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
+import { AssignmentListComponent } from './components/personal-space/classroom-reservation/assignment-list/assignment-list.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +26,18 @@ import { StudentComponent } from './components/student/student.component';
     StudentComponent,
     ClassroomReservationComponent,
     ScheduleComponent,
+    AssignmentListComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

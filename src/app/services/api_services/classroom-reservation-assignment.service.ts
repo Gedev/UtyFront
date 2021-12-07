@@ -6,14 +6,15 @@ import {ClassroomReservation} from "../../models/classroom-reservation";
 @Injectable({
   providedIn: 'root'
 })
-export class ClassroomReservationService {
+export class ClassroomReservationAssignmentService {
 
-  private readonly _apiURL = "http://localhost:8080/classrooms_reservation";
+  private readonly _apiURL = "http://localhost:8080/classrooms_reservation/assignment?status=true";
   constructor(private _classroomsReservations:HttpClient) {
 
   }
 
-  getAllReservations():Observable<ClassroomReservation[]> {
+  getAllPendingReservations():Observable<ClassroomReservation[]> {
     return this._classroomsReservations.get(this._apiURL) as Observable<ClassroomReservation[]>;
   }
+
 }

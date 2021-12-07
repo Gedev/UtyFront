@@ -2,29 +2,36 @@
 
 <form>
 
-  <div class="mb-3">
-    <label for="" class="form-label">Class type</label>
-    <select id="" class="form-control" >
-      <option value="SUITE">Classroom</option>
-      <option value="PENTHOUSE">Amphithéâtre</option>
-      <option value="BASIC">Salle de conférence</option>
-    </select>
-  </div>
+<!--  <div class="mb-3">-->
+<!--    <label for="" class="form-label">Class type</label>-->
+<!--    <select id="" class="form-control" >-->
+<!--      <option value="SUITE">Classroom</option>-->
+<!--      <option value="PENTHOUSE">Amphithéâtre</option>-->
+<!--      <option value="BASIC">Salle de conférence</option>-->
+<!--    </select>-->
+<!--  </div>-->
 
+  <label for="" class="form-label">Date</label>
   <div class="mb-3">
-    <label for="" class="form-label">Date</label>
-    <input type="date" class="form-control">
+    <mat-form-field class="mb-3" appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </div>
 
   <label for="" class="form-label">Start Time</label>
   <div class="row">
     <div class="col-sm-2">
         <select class="form-control" >
+          <option value="" disabled selected hidden>hours</option>
           <option *ngFor="let hour of hours" value=>{{ hour }}</option>
         </select>
     </div>
     <div class="col-sm-2">
       <select class="form-control" >
+        <option value="" disabled selected hidden>minutes</option>
         <option *ngFor="let minute of minutes" value=>{{ minute }}</option>
       </select>
     </div>
@@ -34,11 +41,13 @@
   <div class="row">
     <div class="col-sm-2">
       <select class="form-control" >
+        <option value="" disabled selected hidden>hours</option>
         <option *ngFor="let hour of hours" value=>{{ hour }}</option>
       </select>
     </div>
     <div class="col-sm-2">
       <select class="form-control" >
+        <option value="" disabled selected hidden>minutes</option>
         <option *ngFor="let minute of minutes" value=>{{ minute }}</option>
       </select>
     </div>
@@ -52,8 +61,40 @@
 
   <label for="" class="form-label">Equipements</label>
   <div class="mb-3">
-    <label for="" class="form-label">Whiteboard</label>
+    <p>
+      <input type="checkbox" class="form-check-input">
+      <label for="" class="form-label">Whiteboard </label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="form-check-input">
+      <label for="" class="form-label">Blackboard </label>
+    </p>
+
+    <p>
     <input type="checkbox" class="form-check-input">
+    <label for="" class="form-label">Projector </label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="form-check-input">
+      <label for="" class="form-label">Professor personal computer </label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="form-check-input">
+      <label for="" class="form-label">Students personal computer</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="form-check-input">
+      <label for="" class="form-label">Interactive Whiteboard</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="form-check-input">
+      <label for="" class="form-label">Speakers</label>
+    </p>
   </div>
 
   <button type="submit" class="btn btn-success">Reserve</button>
