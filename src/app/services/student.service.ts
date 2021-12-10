@@ -8,11 +8,11 @@ import {Student} from "../models/student";
 })
 export class StudentService {
   private _apiURL = "http://localhost:8080/student";
-  constructor(private _student:HttpClient) {
+  constructor(private _client:HttpClient) {
 
   }
 
   getAll():Observable<Student[]> {
-    return this._student.get(this._apiURL) as Observable<Student[]>;
+    return this._client.get(this._apiURL) as Observable<Student[]>;
   }
 }

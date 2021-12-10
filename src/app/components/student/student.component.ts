@@ -8,7 +8,7 @@ import {Student} from "../../models/student";
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-
+  panelOpenState = false;
   listStudent: Student[] = [];
 
   constructor(private _sServ:StudentService) {
@@ -16,8 +16,9 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getListStudent();
   }
+
   getListStudent() {
     this._sServ.getAll().subscribe({
       next: stud => this.listStudent = stud,

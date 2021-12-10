@@ -1,9 +1,22 @@
+<h2>Classroom reservation Assignment</h2>
+<h3>List of Classroom reservations :</h3>
 
 
-<ul *ngFor="let reserv of listClassroomsReservations">
-  <li>ID : {{ reserv.id }}</li>
-  <li>Start_time : {{ reserv.start_time }}</li>
-  <li>End_time : {{ reserv.end_time }}</li>
-  <li>Professor_id : {{ reserv.professor_id }}</li>
-  <li>Professor_id : {{ reserv.professor.username }}</li>
+<div class="card" style="width: 18rem;" *ngFor="let reserv of listClassroomsReservations; let i = index">
+  <div class="card-body">
+    <h5 class="card-title">Reservation id {{ reserv.id }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">By Professor name : {{ reserv.professor.firstname }} {{ reserv.professor.lastname }}</h6>
+    <p class="card-text">
+      Professor_id : {{ reserv.professor.id }}, Start_time : {{ reserv.start_time }} - End_time : {{ reserv.end_time }}
+      Equipement needed :
+    </p>
+      <button type="button" class="btn btn-info" (click)="assignClassroom(reserv.id)">Assign classroom</button>
+  </div>
+</div>
+
+<h2>List of classrooms where reservation_id = room_num</h2>
+<ul *ngFor="let classroom of listClassrooms">
+  <li>{{ classroom.id}}</li>
+  <li>{{ classroom.room_num}}</li>
+  <li> "List of equipments"</li>
 </ul>

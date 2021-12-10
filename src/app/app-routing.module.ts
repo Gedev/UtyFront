@@ -8,13 +8,15 @@ import {ScheduleComponent} from "./components/personal-space/schedule/schedule.c
 import {
   AssignmentListComponent
 } from "./components/personal-space/classroom-reservation/assignment-list/assignment-list.component";
+import {ClassroomComponent} from "./components/classroom/classroom.component";
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent},
+  { path: '', component: HomepageComponent },
   { path: 'my-personal-space', component: ScheduleComponent },
-  { path: 'classroom-reservation', component: ClassroomReservationComponent},
-  { path: 'student', component: StudentComponent},
-  { path: 'assignment-list', component: AssignmentListComponent}
+  { path: 'classroom-reservation', component: ClassroomReservationComponent },
+  { path: 'student', component: StudentComponent },
+  { path: 'assignment-list', component: AssignmentListComponent },
+  { path: 'classroom', component: ClassroomComponent }
 ]
 
 @NgModule({

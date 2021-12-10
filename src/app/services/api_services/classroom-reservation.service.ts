@@ -9,11 +9,11 @@ import {ClassroomReservation} from "../../models/classroom-reservation";
 export class ClassroomReservationService {
 
   private readonly _apiURL = "http://localhost:8080/classrooms_reservation";
-  constructor(private _classroomsReservations:HttpClient) {
+  constructor(private _client:HttpClient) {
 
   }
 
   getAllReservations():Observable<ClassroomReservation[]> {
-    return this._classroomsReservations.get(this._apiURL) as Observable<ClassroomReservation[]>;
+    return this._client.get(this._apiURL) as Observable<ClassroomReservation[]>;
   }
 }

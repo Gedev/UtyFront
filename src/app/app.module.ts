@@ -16,6 +16,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import { AssignmentListComponent } from './components/personal-space/classroom-reservation/assignment-list/assignment-list.component';
+import { ClassroomComponent } from './components/classroom/classroom.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { AssignmentListComponent } from './components/personal-space/classroom-r
     ClassroomReservationComponent,
     ScheduleComponent,
     AssignmentListComponent,
+    ClassroomComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { AssignmentListComponent } from './components/personal-space/classroom-r
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

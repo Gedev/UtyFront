@@ -1,11 +1,11 @@
 export interface ClassroomReservation {
   id: number,
-  professor_id: number,
   room_num: number,
   start_time: string,
   end_time: string,
   status: boolean,
   professor: {
+    id: number
     username: string,
     lastname: string,
     firstname: string,
