@@ -19,6 +19,9 @@ import { AssignmentListComponent } from './components/personal-space/classroom-r
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -32,19 +35,22 @@ import {MatExpansionModule} from "@angular/material/expansion";
     AssignmentListComponent,
     ClassroomComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatCardModule,
-    MatExpansionModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatNativeDateModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatSnackBarModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
