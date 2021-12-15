@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ClassroomReservation} from "../../models/classroom-reservation";
 import {Classroom} from "../../models/classroom";
+import {FormClassroomAssignment} from "../../models/form-classroom-assignment";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class ClassroomReservationAssignmentService {
 
   assignClassroom(id: number):Observable<Classroom[]> {
     return this._client.get(this._apiURL + "/assignment/" + id) as Observable<Classroom[]>;
+  }
+
+  searchClassroom(Form: FormClassroomAssignment):Observable<Classroom[]> {
+    return this._client.post(this._apiURL + "/search", Form) as Observable<Classroom[]>;
   }
 
 }

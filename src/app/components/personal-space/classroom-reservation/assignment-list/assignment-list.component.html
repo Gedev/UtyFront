@@ -1,22 +1,34 @@
+<div class="center-container">
 <h2>Classroom reservation Assignment</h2>
 <h3>List of Classroom reservations :</h3>
-
-
-<div class="card" style="width: 18rem;" *ngFor="let reserv of listClassroomsReservations; let i = index">
-  <div class="card-body">
-    <h5 class="card-title">Reservation id {{ reserv.id }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">By Professor name : {{ reserv.professor.firstname }} {{ reserv.professor.lastname }}</h6>
-    <p class="card-text">
-      Professor_id : {{ reserv.professor.id }}, Start_time : {{ reserv.start_time }} - End_time : {{ reserv.end_time }}
-      Equipement needed :
-    </p>
-      <button type="button" class="btn btn-info" (click)="assignClassroom(reserv.id)">Assign classroom</button>
+  <div style="width: 22rem;" *ngFor="let reserv of listClassroomsReservations; let i = index">
+    <mat-card>
+      <mat-card-title>By Professor {{ reserv.professor.firstname }} {{ reserv.professor.lastname }}</mat-card-title>
+      <mat-card-subtitle>Reservation id {{ reserv.id }}</mat-card-subtitle>
+      <mat-card-content>
+        Equipement :
+        <ul *ngFor="let equip of reserv.equipments">
+          <li> {{ equip.name }} </li>
+        </ul>
+        <p>Professor_id : {{ reserv.professor.id }}, Start_time : {{ reserv.start_time }} - End_time : {{ reserv.end_time }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="assign-classroom-button" (click)="assignClassroom(i)">Assign classroom</button>
+      </mat-card-actions>
+  </mat-card>
   </div>
-</div>
 
-<h2>List of classrooms where reservation_id = room_num</h2>
-<ul *ngFor="let classroom of listClassrooms">
-  <li>{{ classroom.id}}</li>
-  <li>{{ classroom.room_num}}</li>
-  <li> "List of equipments"</li>
-</ul>
+
+  <div *ngIf="listClassrooms.length == 0; else elseBlock">
+    THE LIST IS EMPTY, No classroom available
+  </div>
+
+  <ng-template #elseBlock>
+    <h2>List of classrooms available for </h2>
+    <ul *ngFor="let classroom of listClassrooms">
+      <li>Classroom id :{{ classroom.id}}</li>
+      <li>Classroom number :{{ classroom.room_num}}</li>
+      <li>Classroom equipment :{{ classroom.equipment}}</li>
+    </ul>
+  </ng-template>
+</div>

@@ -22,22 +22,37 @@ export class AssignmentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListClassroomsReservations();
+    console.log(this.listClassroomsReservations);
   }
 
   getListClassroomsReservations() {
     this._sServ.getAllPendingReservations().subscribe( {
-      next: stud => this.listClassroomsReservations = stud,
+      next: stud => {
+          this.listClassroomsReservations = stud;
+          console.log(stud);
+          JSON.stringify(this.listClassroomsReservations);
+      },
+
       error: tempError => alert("Failed to get data from the server."),
       complete: () => console.log("Success get all pending reservations")
     });
   }
 
   assignClassroom(id: number) {
-    this._sServ.assignClassroom(id).subscribe( {
+    let form = this.listClassroomsReservations[id];
+    const listIdEquipment: number[] = [];
+    form.equipments.forEach(elem => {
+      listIdEquipment.push(elem.id)
+    })
+    this._sServ.searchClassroom({
+      id_reservation: form.id,
+      start_time: form.start_time,
+      end_time: form.end_time,
+      roomEquipment: listIdEquipment,
+    }).subscribe( {
       next: stud => this.listClassrooms = stud,
       error: tempError => alert("Failed to get data from the server."),
       complete: () => console.log("Success search for classroom")
     });
   }
-
 }

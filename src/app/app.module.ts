@@ -22,6 +22,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -35,22 +38,25 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AssignmentListComponent,
     ClassroomComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatNativeDateModule,
-        MatCardModule,
-        MatExpansionModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatSnackBarModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

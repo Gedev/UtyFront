@@ -1,0 +1,17 @@
+mat-card {
+  min-width: 600px;
+  margin: 2em auto !important;
+
+}
+
+mat-form-field {
+  display: block;
+}
+
+.center-container {
+  margin-left: 30%;
+}
+
+.assign-classroom-button {
+  background-color: #6fb2ea;
+}
