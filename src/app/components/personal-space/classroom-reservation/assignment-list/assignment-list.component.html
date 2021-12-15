@@ -13,22 +13,42 @@
         <p>Professor_id : {{ reserv.professor.id }}, Start_time : {{ reserv.start_time }} - End_time : {{ reserv.end_time }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button class="assign-classroom-button" (click)="assignClassroom(i)">Assign classroom</button>
+        <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="assignClassroom(i)">Assign classroom</button>
       </mat-card-actions>
   </mat-card>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="staticBackdropLabel">List of classrooms available</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="listClassrooms.length == 0; else elseBlock">
+            Unfortunately, no classrooms are available for these equipments.
+          </div>
 
-  <div *ngIf="listClassrooms.length == 0; else elseBlock">
-    THE LIST IS EMPTY, No classroom available
+          <ng-template #elseBlock>
+
+            <ul *ngFor="let classroom of listClassrooms">
+              <li>Classroom number : {{ classroom.room_num}}</li>
+              <button mat-raised-button class="bi bi-arrow-right assign-classroom-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+              </svg> Assign this classroom</button>
+              <hr />
+            </ul>
+          </ng-template>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <ng-template #elseBlock>
-    <h2>List of classrooms available for </h2>
-    <ul *ngFor="let classroom of listClassrooms">
-      <li>Classroom id :{{ classroom.id}}</li>
-      <li>Classroom number :{{ classroom.room_num}}</li>
-      <li>Classroom equipment :{{ classroom.equipment}}</li>
-    </ul>
-  </ng-template>
 </div>
