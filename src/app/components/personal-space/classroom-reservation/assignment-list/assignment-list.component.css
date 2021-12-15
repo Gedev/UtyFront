@@ -1,6 +1,7 @@
 mat-card {
   min-width: 600px;
   margin: 2em auto !important;
+  padding: 30px;
 
 }
 
@@ -9,9 +10,15 @@ mat-form-field {
 }
 
 .center-container {
-  margin-left: 30%;
+  margin-left: 29%;
 }
 
 .assign-classroom-button {
-  background-color: #6fb2ea;
+  background-color: rgba(103, 58, 183, 0.45);
+  color: white;
+}
+
+.modal-assign-classroom-button {
+  background-color: rgba(104, 183, 58, 0.69);
+  color: white;
 }

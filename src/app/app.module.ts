@@ -25,6 +25,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatToolbarModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

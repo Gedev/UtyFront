@@ -13,13 +13,13 @@
         <p>Professor_id : {{ reserv.professor.id }}, Start_time : {{ reserv.start_time }} - End_time : {{ reserv.end_time }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="assignClassroom(i)">Assign classroom</button>
+        <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#modalAssignClassroom" (click)="assignClassroom(i)">Search classroom</button>
       </mat-card-actions>
   </mat-card>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="modalAssignClassroom" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -35,7 +35,7 @@
 
             <ul *ngFor="let classroom of listClassrooms">
               <li>Classroom number : {{ classroom.room_num}}</li>
-              <button mat-raised-button class="bi bi-arrow-right assign-classroom-button">
+              <button mat-raised-button class="bi bi-arrow-right modal-assign-classroom-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
               </svg> Assign this classroom</button>

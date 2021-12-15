@@ -4,7 +4,6 @@ import {
   ClassroomReservationAssignmentService
 } from "../../../../services/api_services/classroom-reservation-assignment.service";
 import {Classroom} from "../../../../models/classroom";
-import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -23,7 +22,6 @@ export class AssignmentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListClassroomsReservations();
-    console.log(this.listClassroomsReservations);
   }
 
   getListClassroomsReservations() {

@@ -10,4 +10,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 
 nav {
   background-color: white;
+  color: rgba(103, 58, 183, 0.45);
+}
+
+.nav a {
+  text-decoration: none;
+  color: rgba(103, 58, 183, 0.93);
 }

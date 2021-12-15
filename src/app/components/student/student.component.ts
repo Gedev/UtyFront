@@ -22,7 +22,7 @@ export class StudentComponent implements OnInit {
   getListStudent() {
     this._sServ.getAll().subscribe({
       next: stud => this.listStudent = stud,
-      error: tempError => alert("Echec récupération liste serveur"),
+      error: tempError => alert("Failed to get Equipment list from the server"),
       complete: () => console.log("Success")
     });
   }

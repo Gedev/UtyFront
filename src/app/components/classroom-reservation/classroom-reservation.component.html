@@ -3,15 +3,15 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
       <h2>Room Reservation</h2>
 
-      <mat-form-field class="full-width-input">
-        <mat-label>Select Room Type</mat-label>
-        <mat-select formControlName="roomTypeId" required>
-          <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{roomType.name}}</mat-option>
-        </mat-select>
-        <mat-error>
-          Please select room type
-        </mat-error>
-      </mat-form-field>
+<!--      <mat-form-field class="full-width-input">-->
+<!--        <mat-label>Select Room Type</mat-label>-->
+<!--        <mat-select formControlName="roomTypeId" required>-->
+<!--          <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{roomType.name}}</mat-option>-->
+<!--        </mat-select>-->
+<!--        <mat-error>-->
+<!--          Please select room type-->
+<!--        </mat-error>-->
+<!--      </mat-form-field>-->
 
       <mat-form-field class="full-width-input">
         <mat-label>Choose a date</mat-label>
