@@ -6,6 +6,7 @@ export interface ClassroomReservation {
   room_num: number,
   start_time: string,
   end_time: string,
+  size: number,
   status: boolean,
   professor: Professor,
   equipments: RoomEquipment[]

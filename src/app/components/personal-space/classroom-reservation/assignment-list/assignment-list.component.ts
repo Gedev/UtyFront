@@ -15,6 +15,7 @@ export class AssignmentListComponent implements OnInit {
 
   listClassroomsReservations: ClassroomReservation[] = [];
   listClassrooms: Classroom[] = [];
+  idReservation: number = 0;
 
   constructor(private _sServ:ClassroomReservationAssignmentService) {
 
@@ -37,16 +38,18 @@ export class AssignmentListComponent implements OnInit {
     });
   }
 
-  assignClassroom(id: number) {
+  searchClassroom(id: number, idReserv: number) {
+    this.idReservation = idReserv;
     let form = this.listClassroomsReservations[id];
     const listIdEquipment: number[] = [];
     form.equipments.forEach(elem => {
       listIdEquipment.push(elem.id)
     })
     this._sServ.searchClassroom({
-      id_reservation: form.id,
+      reservation_id: form.id,
       start_time: form.start_time,
       end_time: form.end_time,
+      size: form.size,
       roomEquipment: listIdEquipment,
     }).subscribe( {
       next: stud => this.listClassrooms = stud,
@@ -54,4 +57,13 @@ export class AssignmentListComponent implements OnInit {
       complete: () => console.log("Success search for classroom")
     });
   }
+
+  assignClassroom(reservation_id: number, classroom_id: number) {
+    this._sServ.assignClassroom(reservation_id, { "classroomId" : classroom_id }).subscribe( {
+      next: reserv => console.log(reserv),
+      error: tempError => alert("Failed to send data from the server."),
+      complete: () => console.log("Success assignment of the classroom")
+      });
+  }
+
 }

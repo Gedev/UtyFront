@@ -4,16 +4,25 @@
   <div style="width: 22rem;" *ngFor="let reserv of listClassroomsReservations; let i = index">
     <mat-card>
       <mat-card-title>By Professor {{ reserv.professor.firstname }} {{ reserv.professor.lastname }}</mat-card-title>
-      <mat-card-subtitle>Reservation id {{ reserv.id }}</mat-card-subtitle>
+      <mat-card-subtitle>Reservation id #{{ reserv.id }}</mat-card-subtitle>
       <mat-card-content>
-        Equipement :
-        <ul *ngFor="let equip of reserv.equipments">
-          <li> {{ equip.name }} </li>
-        </ul>
-        <p>Professor_id : {{ reserv.professor.id }}, Start_time : {{ reserv.start_time }} - End_time : {{ reserv.end_time }}</p>
+        <div class="reservation-details-section">
+          <span>Equipement require:</span>
+          <div class="no-equipment-needed" *ngIf="reserv.equipments.length == 0; else elseBlock">
+            No equipment needed
+          </div>
+          <ng-template #elseBlock>
+            <div class="equipmentList" *ngFor="let equip of reserv.equipments">
+              {{ equip.name }}
+            </div>
+          </ng-template>
+        </div>
+        <div class="reservation-details-section">
+          <span>Start time : </span>{{ reserv.start_time }} - <span> End time : </span>{{ reserv.end_time }}
+        </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#modalAssignClassroom" (click)="assignClassroom(i)">Search classroom</button>
+        <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#modalAssignClassroom" (click)="searchClassroom(i, reserv.id)">Search classroom</button>
       </mat-card-actions>
   </mat-card>
   </div>
@@ -23,19 +32,19 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title" id="staticBackdropLabel">List of classrooms available</h2>
+          <h2 class="modal-title" id="staticBackdropLabel">List of classrooms available for the Reservation n°{{ idReservation }}  </h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div *ngIf="listClassrooms.length == 0; else elseBlock">
-            Unfortunately, no classrooms are available for these equipments.
+            Unfortunately, no classrooms are available with these equipments.
           </div>
 
           <ng-template #elseBlock>
 
             <ul *ngFor="let classroom of listClassrooms">
               <li>Classroom number : {{ classroom.room_num}}</li>
-              <button mat-raised-button class="bi bi-arrow-right modal-assign-classroom-button">
+              <button mat-raised-button class="bi bi-arrow-right modal-assign-classroom-button" (click)="assignClassroom(idReservation, classroom.id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
               </svg> Assign this classroom</button>

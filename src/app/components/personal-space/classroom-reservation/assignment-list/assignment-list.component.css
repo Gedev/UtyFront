@@ -14,11 +14,35 @@ mat-form-field {
 }
 
 .assign-classroom-button {
-  background-color: rgba(103, 58, 183, 0.45);
+  background-color: rgba(103, 58, 183, 0.58);
   color: white;
 }
 
 .modal-assign-classroom-button {
   background-color: rgba(104, 183, 58, 0.69);
   color: white;
+}
+
+.assign-classroom-button:hover {
+  background-color: rgba(103, 58, 183, 0.70);
+}
+
+.modal-assign-classroom-button:hover {
+  background-color: rgba(104, 183, 58, 0.80);
+}
+
+mat-card-content span {
+  font-weight: bold;
+}
+
+.equipmentList {
+  list-style-type: none ;
+}
+
+.no-equipment-needed {
+  color: green;
+}
+
+.reservation-details-section {
+  padding: 5px;
 }
