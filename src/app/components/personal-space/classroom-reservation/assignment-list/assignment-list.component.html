@@ -1,31 +1,56 @@
 <div class="center-container">
 <h2>Classroom reservation Assignment</h2>
-<h3>List of Classroom reservations :</h3>
-  <div style="width: 22rem;" *ngFor="let reserv of listClassroomsReservations; let i = index">
-    <mat-card>
-      <mat-card-title>By Professor {{ reserv.professor.firstname }} {{ reserv.professor.lastname }}</mat-card-title>
-      <mat-card-subtitle>Reservation id #{{ reserv.id }}</mat-card-subtitle>
-      <mat-card-content>
-        <div class="reservation-details-section">
-          <span>Equipement require:</span>
-          <div class="no-equipment-needed" *ngIf="reserv.equipments.length == 0; else elseBlock">
-            No equipment needed
-          </div>
-          <ng-template #elseBlock>
-            <div class="equipmentList" *ngFor="let equip of reserv.equipments">
-              {{ equip.name }}
+<h3>List of Classroom reservations : <svg class="bi" width="32" height="32" fill="currentColor">
+  <use xlink:href="bootstrap-icons.svg#heart-fill"/>
+</svg></h3>
+  <div *ngIf="listClassroomsReservations.length > 0; else elseBlock">
+    <div style="width: 22rem;" *ngFor="let reserv of listClassroomsReservations; let i = index">
+      <mat-card>
+        <mat-card-title><i class="bi bi-person-circle"></i> Professor <span class="title-assignment-professor">{{ reserv.professor.firstname }} {{ reserv.professor.lastname }}</span></mat-card-title>
+        <mat-card-subtitle>Reservation id #{{ reserv.id }}</mat-card-subtitle>
+        <mat-card-content>
+          <div class="reservation-details-section">
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check-fill" viewBox="0 0 16 16">
+              <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+            </svg> Date :</div>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+              </svg>
+              Equipement require : </span>
+            <div class="no-equipment-needed" *ngIf="reserv.equipments.length == 0; else elseBlock">
+              No equipment needed
             </div>
-          </ng-template>
-        </div>
-        <div class="reservation-details-section">
-          <span>Start time : </span>{{ reserv.start_time }} - <span> End time : </span>{{ reserv.end_time }}
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#modalAssignClassroom" (click)="searchClassroom(i, reserv.id)">Search classroom</button>
-      </mat-card-actions>
-  </mat-card>
+            <ng-template #elseBlock>
+              <div class="equipmentList" *ngFor="let equip of reserv.equipments">
+                {{ equip.name }}
+              </div>
+            </ng-template>
+          </div>
+          <div class="reservation-details-section">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              </svg>
+              Start time : </span>{{ reserv.start_time }} -
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              </svg>
+              End time : </span>{{ reserv.end_time }}
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button class="assign-classroom-button" data-bs-toggle="modal" data-bs-target="#modalAssignClassroom" (click)="searchClassroom(i, reserv.id)">Search classroom</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
+<!--  <ng-template #elseBlock>-->
+<!--    <div class="alert alert-info" role="alert">-->
+<!--      No Room reservations-->
+<!--    </div>-->
+<!--  </ng-template>-->
 
   <!-- Modal -->
   <div class="modal fade" id="modalAssignClassroom" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -42,14 +67,27 @@
 
           <ng-template #elseBlock>
 
-            <ul *ngFor="let classroom of listClassrooms">
-              <li>Classroom number : {{ classroom.room_num}}</li>
+            <div *ngFor="let classroom of listClassrooms">
+              <div>
+                <h3>Classroom number : {{ classroom.room_num}}</h3>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+              </svg>
+                Capacity : {{ classroom.surface}}</div>
+              <div *ngFor="let equip of classroom.roomEquipmentList">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-laptop-fill" viewBox="0 0 16 16">
+                  <path d="M2.5 2A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"/>
+                </svg>
+                {{ equip.name}}
+              </div>
               <button mat-raised-button class="bi bi-arrow-right modal-assign-classroom-button" (click)="assignClassroom(idReservation, classroom.id)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-              </svg> Assign this classroom</button>
+                Assign this classroom</button>
               <hr />
-            </ul>
+            </div>
           </ng-template>
 
         </div>
@@ -61,3 +99,16 @@
   </div>
 
 </div>
+
+<!--<ul *ngFor="let classroom of listClassrooms">-->
+<!--  <li>Classroom number : {{ classroom.room_num}}</li>-->
+<!--  <li>Classroom capacity : {{ classroom.surface}}</li>-->
+<!--  <div *ngFor="let equip of classroom.equipment">-->
+<!--    Classroom capacity : {{ equip.id}}-->
+<!--  </div>-->
+<!--  <button mat-raised-button class="bi bi-arrow-right modal-assign-classroom-button" (click)="assignClassroom(idReservation, classroom.id)">-->
+<!--    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">-->
+<!--      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>-->
+<!--    </svg> Assign this classroom</button>-->
+<!--  <hr />-->
+<!--</ul>-->

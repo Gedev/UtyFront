@@ -7,6 +7,7 @@ import {DatePipe} from "@angular/common";
 import { CreateReservationForm } from 'src/app/models/create-reservation-form';
 import {RoomEquipmentService} from "../../services/api_services/room-equipment.service";
 import {ClassroomReservationService} from "../../services/api_services/classroom-reservation.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-classroom-reservation',
@@ -21,9 +22,11 @@ export class ClassroomReservationComponent implements OnInit {
   roomTypes: RoomType[] = [];
   form: FormGroup;
   timePattern = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+  max: number = 5;
 
 
-  constructor(private _snackBar: MatSnackBar,
+  constructor( private route:Router,
+              private _snackBar: MatSnackBar,
               private formBuilder: FormBuilder,
               private datePipe: DatePipe,
               private equipmentService: RoomEquipmentService,
@@ -32,6 +35,7 @@ export class ClassroomReservationComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDay = new Date().getDate();
+
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.maxDate = new Date(currentYear + 1, currentMonth, 31);
     this.startDate = new Date(currentYear, currentMonth, currentDay);
@@ -41,12 +45,11 @@ export class ClassroomReservationComponent implements OnInit {
       roomTypeId: [''],
       date: ['', Validators.required],
       startTime: new FormControl('10:10',[Validators.required]) ,
-      endTime: new FormControl( null, [Validators.required]),
-      size: ['', Validators.required],
+      endTime: new FormControl( '12:00', [Validators.required]),
+      size: ['20', Validators.required],
       equipmentIds: ['']
     },
     );
-    // this.form.controls['endTime'].addValidators(this.timeValidator)
   }
 
   ngOnInit(): void {
@@ -54,9 +57,31 @@ export class ClassroomReservationComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.form.value.date);
+    let date = this.form.value.date;
+    let actualHours = new Date().getHours();
+
+    let actualMinutes = new Date().getMinutes();
+    let formDay = date.getDate();
+    let formStartTime = this.form.value.startTime;
+
+    let formStartTimeHours = formStartTime.substring(0,2);
+    let formStartTimeMinutes = formStartTime.substring(3,5);
+
+    const currentDay = new Date().getDate();
     if(this.form.value.startTime > this.form.value.endTime) {
-      alert('The end date must be greater than the start date');
-      return;
+      alert('The end time must be greater than the start time');
+    }
+    console.log(formDay == currentDay.toString());
+    console.log(formStartTimeMinutes < actualMinutes);
+    if(formDay == currentDay.toString()) {
+      if(formStartTimeHours < actualHours) {
+        alert("The start time must be greater than the actual time")
+        return;
+      } else if(formStartTimeHours == actualHours && formStartTimeMinutes < actualMinutes) {
+        alert("The start time must be greater than the actual time - formStartTimeMinutes < actualMinutes")
+        return;
+      }
     }
 
     const createReservation = new CreateReservationForm();
@@ -70,10 +95,11 @@ export class ClassroomReservationComponent implements OnInit {
         startTime: v.startTime,
         endTime: v.endTime,
         size: v.size,
+        reservedByProfessorId: Math.ceil(Math.random() * this.max),
         roomEquipment: v.equipmentIds
       })
         .subscribe({
-          next: (inserted) => {  },
+          next: () => { this.route.navigateByUrl('/assignment-list') },
           error: (error) => { console.log(error); }
         })
     }
@@ -86,17 +112,4 @@ export class ClassroomReservationComponent implements OnInit {
       complete: () => console.log("Success get Equipment list")
     });
   }
-
-  // timeValidator( control : AbstractControl ) : ValidationErrors | null {
-  //   const start_time = this.form.value.startTime;
-  //   const end_time = control.value.endTime;
-  //
-  //   if(start_time && end_time && start_time < end_time) {
-  //     return null;
-  //   } else {
-  //     return {
-  //       timeCompare: 'The end date must be greater than the start date'
-  //     }
-  //   }
-  // }
 }

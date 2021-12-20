@@ -1,8 +1,8 @@
+import {RoomEquipment} from "./room-equipment";
+
 export interface Classroom {
   id: number,
   room_num: number,
-  equipment: {
-    projector: boolean,
-    whiteboard : boolean,
-  }
+  surface: number,
+  roomEquipmentList: RoomEquipment[]
 }

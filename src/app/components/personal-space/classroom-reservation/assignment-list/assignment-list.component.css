@@ -13,6 +13,11 @@ mat-form-field {
   margin-left: 29%;
 }
 
+h3 {
+  font-weight: bold;
+  color: rgba(103, 58, 183, 0.80);
+}
+
 .assign-classroom-button {
   background-color: rgba(103, 58, 183, 0.58);
   color: white;

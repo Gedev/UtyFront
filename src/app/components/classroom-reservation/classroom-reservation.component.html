@@ -33,17 +33,12 @@
             </mat-error>
             <mat-hint>HH:MM</mat-hint>
           </mat-form-field>
-
-
         </div>
         <div class="col-sm-6">
           <mat-form-field>
             <mat-label>End Time</mat-label>
             <input matInput placeholder="EndTime" formControlName="endTime"  [pattern]="timePattern" required>
             <mat-error>
-<!--              <div *ngIf="form.value.startTime >= form.value.endTime">-->
-                Start time cannot be greater than End time
-<!--              </div>-->
                 Please enter valid format time (HH:MM)
             </mat-error>
             <mat-hint>HH:MM</mat-hint>
@@ -52,6 +47,7 @@
       </div>
 
       <mat-form-field class="full-width-input">
+        <mat-label>Capacity of the room</mat-label>
         <input type="number" matInput placeholder="Capacity of the room" formControlName="size" min="1" max="300" required>
         <mat-error>
           Please enter a valid number (1 - 300)
