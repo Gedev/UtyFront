@@ -18,7 +18,11 @@ export class ClassroomReservationAssignmentService {
   }
 
   getAllPendingReservations():Observable<ClassroomReservation[]> {
-    return this._client.get(this._apiURL + "/assignment?status=true") as Observable<ClassroomReservation[]>;
+    return this._client.get(this._apiURL + "/assignment?status=false") as Observable<ClassroomReservation[]>;
+  }
+
+  getAllReservations():Observable<ClassroomReservation[]> {
+    return this._client.get(this._apiURL + "/all") as Observable<ClassroomReservation[]>;
   }
 
   searchClassroom(Form: FormClassroomAssignment):Observable<Classroom[]> {

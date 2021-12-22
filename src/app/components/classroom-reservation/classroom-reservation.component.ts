@@ -4,7 +4,6 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, 
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RoomType} from "../../models/room-type";
 import {DatePipe} from "@angular/common";
-import { CreateReservationForm } from 'src/app/models/create-reservation-form';
 import {RoomEquipmentService} from "../../services/api_services/room-equipment.service";
 import {ClassroomReservationService} from "../../services/api_services/classroom-reservation.service";
 import {Router} from "@angular/router";
@@ -35,7 +34,6 @@ export class ClassroomReservationComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDay = new Date().getDate();
-
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.maxDate = new Date(currentYear + 1, currentMonth, 31);
     this.startDate = new Date(currentYear, currentMonth, currentDay);
@@ -44,7 +42,7 @@ export class ClassroomReservationComponent implements OnInit {
     this.form = this.formBuilder.group({
       roomTypeId: [''],
       date: ['', Validators.required],
-      startTime: new FormControl('10:10',[Validators.required]) ,
+      startTime: new FormControl('10:00',[Validators.required]) ,
       endTime: new FormControl( '12:00', [Validators.required]),
       size: ['20', Validators.required],
       equipmentIds: ['']
@@ -57,7 +55,6 @@ export class ClassroomReservationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value.date);
     let date = this.form.value.date;
     let actualHours = new Date().getHours();
 
@@ -72,8 +69,6 @@ export class ClassroomReservationComponent implements OnInit {
     if(this.form.value.startTime > this.form.value.endTime) {
       alert('The end time must be greater than the start time');
     }
-    console.log(formDay == currentDay.toString());
-    console.log(formStartTimeMinutes < actualMinutes);
     if(formDay == currentDay.toString()) {
       if(formStartTimeHours < actualHours) {
         alert("The start time must be greater than the actual time")
@@ -84,11 +79,9 @@ export class ClassroomReservationComponent implements OnInit {
       }
     }
 
-    const createReservation = new CreateReservationForm();
-    const mydate = this.datePipe.transform(this.form.get("date")?.value, "dd-MM-yyyy")
-
     if( this.form.valid ){
       const v = this.form.value;
+
       this._reServ.createReservations({
         roomTypeId: 1,
         date: v.date,
@@ -99,7 +92,7 @@ export class ClassroomReservationComponent implements OnInit {
         roomEquipment: v.equipmentIds
       })
         .subscribe({
-          next: () => { this.route.navigateByUrl('/assignment-list') },
+          next: () => { console.log(v.date); this.route.navigateByUrl('/assignment-list') },
           error: (error) => { console.log(error); }
         })
     }

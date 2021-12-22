@@ -1,6 +1,6 @@
 export interface FormClassroomAssignment {
   reservation_id: number,
-  // date: string,
+  date: Date,
   start_time: string,
   end_time: string,
   size: number,

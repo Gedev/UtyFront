@@ -5,6 +5,7 @@ import {
 } from "../../../../services/api_services/classroom-reservation-assignment.service";
 import {Classroom} from "../../../../models/classroom";
 import {RoomEquipment} from "../../../../models/room-equipment";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,11 +19,9 @@ export class AssignmentListComponent implements OnInit {
   listClassrooms: Classroom[] = [];
   listEquipments: RoomEquipment[] = [];
   idReservation: number = 0;
-  logo: string = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-arrow-right\" viewBox=\"0 0 16 16\">\n" +
-    " <path fill-rule=\"evenodd\" d=\"M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z\"/>\n" +
-    " </svg>";
 
-  constructor(private _sServ:ClassroomReservationAssignmentService) {
+  constructor(private _sServ:ClassroomReservationAssignmentService,
+              private route:Router) {
 
   }
 
@@ -31,13 +30,12 @@ export class AssignmentListComponent implements OnInit {
   }
 
   getListClassroomsReservations() {
-    this._sServ.getAllPendingReservations().subscribe( {
+    this._sServ.getAllReservations().subscribe( {
       next: stud => {
           this.listClassroomsReservations = stud;
           console.log(stud);
           JSON.stringify(this.listClassroomsReservations);
       },
-
       error: tempError => alert("Failed to get data from the server."),
       complete: () => console.log("Success get all pending reservations")
     });
@@ -52,6 +50,7 @@ export class AssignmentListComponent implements OnInit {
     })
     this._sServ.searchClassroom({
       reservation_id: form.id,
+      date: form.date,
       start_time: form.start_time,
       end_time: form.end_time,
       size: form.size,
@@ -69,8 +68,7 @@ export class AssignmentListComponent implements OnInit {
     this._sServ.assignClassroom(reservation_id, { "classroomId" : classroom_id }).subscribe( {
       next: reserv => console.log(reserv),
       error: tempError => alert("Failed to send data from the server."),
-      complete: () => console.log("Success assignment of the classroom")
+      complete: () => this.route.navigateByUrl('/assignment-list')
       });
   }
-
 }

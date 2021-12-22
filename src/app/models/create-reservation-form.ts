@@ -1,9 +1,9 @@
 export class CreateReservationForm {
   roomTypeId: number | undefined;
-  date: string | undefined | null;
+  date: Date | undefined;
   startTime: string | undefined;
   endTime: string | undefined;
   size: number | undefined;
   reservedByProfessorId: number | undefined;
-  roomEquipment: number[] | any;
+  roomEquipment: number[] | undefined;
 }

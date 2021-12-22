@@ -51,3 +51,18 @@ mat-card-content span {
 .reservation-details-section {
   padding: 5px;
 }
+
+.assigned {
+  background-color: #60bd60;
+}
+
+.assigned, .not-assigned {
+  padding-left: 5px;
+  float: right;
+  color: #3a3939;
+}
+
+.not-assigned {
+  background-color: #cb0354;
+}
+
