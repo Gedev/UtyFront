@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+      <h2>Room Reservation</h2>
+
+<!--      <mat-form-field class="full-width-input">-->
+<!--        <mat-label>Select Room Type</mat-label>-->
+<!--        <mat-select formControlName="roomTypeId" required>-->
+<!--          <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{roomType.name}}</mat-option>-->
+<!--        </mat-select>-->
+<!--        <mat-error>-->
+<!--          Please select room type-->
+<!--        </mat-error>-->
+<!--      </mat-form-field>-->
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [min]="minDate" [max]="maxDate" formControlName="date" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+        <mat-error>
+          Please select date
+        </mat-error>
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field>
+            <mat-label>Start Time</mat-label>
+            <input matInput placeholder="StartTime" [pattern]="timePattern" formControlName="startTime" required>
+            <mat-error>
+              Please Enter valid format time (HH:MM)
+            </mat-error>
+            <mat-hint>HH:MM</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field>
+            <mat-label>End Time</mat-label>
+            <input matInput placeholder="EndTime" formControlName="endTime"  [pattern]="timePattern" required>
+            <mat-error>
+                Please enter valid format time (HH:MM)
+            </mat-error>
+            <mat-hint>HH:MM</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Capacity of the room</mat-label>
+        <input type="number" matInput placeholder="Capacity of the room" formControlName="size" min="1" max="300" required>
+        <mat-error>
+          Please enter a valid number (1 - 300)
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Equipments</mat-label>
+        <mat-select formControlName="equipmentIds" multiple>
+          <mat-option *ngFor="let equipment of equipments" [value]="equipment.id"> {{equipment.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" [disabled]="form.invalid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,68 @@
+mat-card {
+  min-width: 600px;
+  margin: 2em auto !important;
+  padding: 30px;
+
+}
+
+mat-form-field {
+  display: block;
+}
+
+.center-container {
+  margin-left: 29%;
+}
+
+h3 {
+  font-weight: bold;
+  color: rgba(103, 58, 183, 0.80);
+}
+
+.assign-classroom-button {
+  background-color: rgba(103, 58, 183, 0.58);
+  color: white;
+}
+
+.modal-assign-classroom-button {
+  background-color: rgba(104, 183, 58, 0.69);
+  color: white;
+}
+
+.assign-classroom-button:hover {
+  background-color: rgba(103, 58, 183, 0.70);
+}
+
+.modal-assign-classroom-button:hover {
+  background-color: rgba(104, 183, 58, 0.80);
+}
+
+mat-card-content span {
+  font-weight: bold;
+}
+
+.equipmentList {
+  list-style-type: none ;
+}
+
+.no-equipment-needed {
+  color: green;
+}
+
+.reservation-details-section {
+  padding: 5px;
+}
+
+.assigned {
+  background-color: #60bd60;
+}
+
+.assigned, .not-assigned {
+  padding-left: 5px;
+  float: right;
+  color: #3a3939;
+}
+
+.not-assigned {
+  background-color: #cb0354;
+}
+

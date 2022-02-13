@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-repeat: repeat;
+  background-image:url(assets/img/background-img.jpg);
+}
+
+nav {
+  background-color: white;
+  color: rgba(103, 58, 183, 0.45);
+}
+
+.nav a {
+  text-decoration: none;
+  color: rgba(103, 58, 183, 0.93);
+}
+
+container {
+
+}
+
+.title-assignment-professor {
+  color: rgba(103, 58, 183, 0.93);
+}

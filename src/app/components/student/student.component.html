@@ -1,5 +1,16 @@
-<ul>
-  <li *ngFor="let student of listStudent">
-    {{ student.username }}
-  </li>
-</ul>
+<h1>List of students</h1>
+<div *ngFor="let st of listStudent; let i = index">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          #{{ st.id }} {{ st.firstname }} {{ st.lastname }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Username : {{ st.username }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Birthdate : {{ st.birthdate }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

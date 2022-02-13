@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StudentService} from "../../services/student.service";
-import {Student} from "../../model/student";
+import {Student} from "../../models/student";
 
 @Component({
   selector: 'app-student',
@@ -8,7 +8,7 @@ import {Student} from "../../model/student";
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-
+  panelOpenState = false;
   listStudent: Student[] = [];
 
   constructor(private _sServ:StudentService) {
@@ -22,7 +22,7 @@ export class StudentComponent implements OnInit {
   getListStudent() {
     this._sServ.getAll().subscribe({
       next: stud => this.listStudent = stud,
-      error: tempError => alert("Echec récupération liste serveur"),
+      error: tempError => alert("Failed to get Equipment list from the server"),
       complete: () => console.log("Success")
     });
   }
