@@ -135,6 +135,15 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/cdk@^13.0.3":
+  version "13.3.8"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-13.3.8.tgz#adbe24ae8869b2a5f2b8f10cc3fa87d87b8d6b97"
+  integrity sha512-ciLYoVxsqnA9hGJTUW74A56NjArYhFdqFYmVDimWWNYAgY7jY1gCfKq9UtixUErDi29FGSCWRbLuZ6w4q0NYnA==
+  dependencies:
+    tslib "^2.3.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~13.0.3":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-13.0.4.tgz#28932cb8e2c9e1eb4a65db459be851932f51eecd"
@@ -202,6 +211,13 @@
   version "13.0.3"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-13.0.3.tgz#10df7cbf8a074c59aaf9616fe7f06728929efbfb"
   integrity sha512-Sxpc9kiCYi59GzKkpvpqgUejXq7P1dt3l1C5mnV3WBdNEpVBDRD63YLlNTya+w4uSMr+WEbtCys41QO8MXNIHQ==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/material@^13.0.3":
+  version "13.3.8"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-13.3.8.tgz#cd9d4b67e0e69444c05a0df004ab61db8edfa004"
+  integrity sha512-y+j4WphhDZXvqKwf/fNuR+QNkH13Qc0fp7//i98f8Gy3Za1NCCc5SfIoifQ7Xqwh2ZKbgnh6GTdtbT4zq+NjaQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -1911,6 +1927,11 @@ boolbase@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+bootstrap-icons@^1.7.2:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.8.3.tgz#14c15e26deaddd42af9f88c4d81f7c45bf26aa98"
+  integrity sha512-s5kmttnbq4BXbx3Bwnj39y+t7Vc3blTtyD77W3aYQ1LlNoS3lNbbGvSYhIbg26Im8KmjScyFpHEevlPOBcIDdA==
 
 bootstrap@^5.1.3:
   version "5.1.3"
@@ -4633,6 +4654,11 @@ parse5-sax-parser@^6.0.1:
   integrity sha512-kXX+5S81lgESA0LsDuGjAlBybImAChYRMT+/uKCEXFBFOeEhS52qUCydGhU3qLRD8D9DVjaUo821WK7DM4iCeg==
   dependencies:
     parse5 "^6.0.1"
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
 
 parse5@^6.0.1:
   version "6.0.1"
